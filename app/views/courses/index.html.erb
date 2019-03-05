@@ -1,0 +1,11 @@
+<h1>Courses#index</h1>
+<%= liunk_to 'add course', new_course_path %.
+<hr>
+<h2> <%= @courses.length <= 0 ? "No Courses" : "" %> </h2>
+<ul>
+    <%@courses.each do |course| %>
+    <li>
+        <%= link_to course.nM,E, COURSE %>
+        <%end%>
+    </li>
+    <ul>
