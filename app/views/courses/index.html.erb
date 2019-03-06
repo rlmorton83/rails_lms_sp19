@@ -1,11 +1,43 @@
-<h1>Courses#index</h1>
-<%= liunk_to 'add course', new_course_path %.
+<h1><%= @course.name %></h1>
+<%= link_to 'add Enrollment', new_course_path(@course) %.
 <hr>
-<h2> <%= @courses.length <= 0 ? "No Courses" : "" %> </h2>
+<h2>teacher </h2> 
+    <%= @courses.length <= 0 ? "No Courses" : "" %> </h2>
 <ul>
-    <%@courses.each do |course| %>
-    <li>
-        <%= link_to course.nM,E, COURSE %>
-        <%end%>
-    </li>
-    <ul>
+
+        <h1><%= @course.name %> Enrollments</h1>
+        <%= link_to 'Add Enrollment', new_course_enrollment_path(@course) %>
+        <hr>
+        
+        <h2>Teacher</h2>
+        <ul>
+          <% @teacher.each do |t| %>
+            <li>
+              <%= t.user.full_name %>
+              <br>
+              <%= link_to 'Remove', course_enrollment_path(@course, t), method: :delete %>
+            </li>
+          <% end %>
+        </ul>
+        
+        <h2>Ta</h2>
+        <ul>
+          <% @ta.each do |a| %>
+            <li>
+              <%= a.user.full_name %>
+              <br>
+              <%= link_to 'Remove', course_enrollment_path(@course, a), method: :delete %>
+            </li>
+          <% end %>
+        </ul>
+        
+        <h2>Student</h2>
+        <ul>
+          <% @student.each do |s| %>
+            <li>
+              <%= s.user.full_name %>
+              <br>
+              <%= link_to 'Remove', course_enrollment_path(@course, s), method: :delete %>
+            </li>
+          <% end %>
+        </ul>
